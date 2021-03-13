@@ -43,7 +43,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
    *
    * @var string
    */
-  static $_tableName = 'civicrm_pivotreportcache';
+  static $_tableName = 'civicrm_pivotreport_cache';
   /**
    * Should CiviCRM log any modifications to this table in the civicrm_log table.
    *
@@ -102,7 +102,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
    * Class constructor.
    */
   function __construct() {
-    $this->__table = 'civicrm_pivotreportcache';
+    $this->__table = 'civicrm_pivotreport_cache';
     parent::__construct();
   }
   /**
@@ -118,7 +118,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
           'type' => CRM_Utils_Type::T_INT,
           'description' => 'Unique PivotReportCache ID',
           'required' => true,
-          'table_name' => 'civicrm_pivotreportcache',
+          'table_name' => 'civicrm_pivotreport_cache',
           'entity' => 'PivotReportCache',
           'bao' => 'CRM_PivotReport_DAO_PivotReportCache',
           'localizable' => 0,
@@ -131,7 +131,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
           'required' => true,
           'maxlength' => 32,
           'size' => CRM_Utils_Type::MEDIUM,
-          'table_name' => 'civicrm_pivotreportcache',
+          'table_name' => 'civicrm_pivotreport_cache',
           'entity' => 'PivotReportCache',
           'bao' => 'CRM_PivotReport_DAO_PivotReportCache',
           'localizable' => 0,
@@ -143,7 +143,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
           'description' => 'Unique path name for cache element',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
-          'table_name' => 'civicrm_pivotreportcache',
+          'table_name' => 'civicrm_pivotreport_cache',
           'entity' => 'PivotReportCache',
           'bao' => 'CRM_PivotReport_DAO_PivotReportCache',
           'localizable' => 0,
@@ -153,7 +153,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
           'type' => CRM_Utils_Type::T_LONGTEXT,
           'title' => ts('Data') ,
           'description' => 'Data associated with this path',
-          'table_name' => 'civicrm_pivotreportcache',
+          'table_name' => 'civicrm_pivotreport_cache',
           'entity' => 'PivotReportCache',
           'bao' => 'CRM_PivotReport_DAO_PivotReportCache',
           'localizable' => 0,
@@ -164,7 +164,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
           'title' => ts('Created Date') ,
           'description' => 'When was the cache item created',
           'default' => 'CURRENT_TIMESTAMP',
-          'table_name' => 'civicrm_pivotreportcache',
+          'table_name' => 'civicrm_pivotreport_cache',
           'entity' => 'PivotReportCache',
           'bao' => 'CRM_PivotReport_DAO_PivotReportCache',
           'localizable' => 0,
@@ -176,7 +176,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
           'description' => 'When should the cache item expire',
           'required' => false,
           'default' => 'NULL',
-          'table_name' => 'civicrm_pivotreportcache',
+          'table_name' => 'civicrm_pivotreport_cache',
           'entity' => 'PivotReportCache',
           'bao' => 'CRM_PivotReport_DAO_PivotReportCache',
           'localizable' => 0,
@@ -188,7 +188,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
           'description' => 'Is the cache entry active?',
           'required' => false,
           'default' => 0,
-          'table_name' => 'civicrm_pivotreportcache',
+          'table_name' => 'civicrm_pivotreport_cache',
           'entity' => 'PivotReportCache',
           'bao' => 'CRM_PivotReport_DAO_PivotReportCache',
           'localizable' => 0,
@@ -200,7 +200,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
           'description' => 'Source of the cache row (1 - rebuildcache, 2 - rebuildcachechunk, 3 - PivotReport Admin UI)',
           'required' => false,
           'default' => 'NULL',
-          'table_name' => 'civicrm_pivotreportcache',
+          'table_name' => 'civicrm_pivotreport_cache',
           'entity' => 'PivotReportCache',
           'bao' => 'CRM_PivotReport_DAO_PivotReportCache',
           'localizable' => 0,
@@ -273,7 +273,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
         ) ,
         'localizable' => false,
         'unique' => true,
-        'sig' => 'civicrm_pivotreportcache::1::group_name::path',
+        'sig' => 'civicrm_pivotreport_cache::1::group_name::path',
       ) ,
       'UI_group_path_date' => array(
         'name' => 'UI_group_path_date',
@@ -284,7 +284,7 @@ class CRM_PivotReport_DAO_PivotReportCache extends CRM_Core_DAO {
         ) ,
         'localizable' => false,
         'unique' => true,
-        'sig' => 'civicrm_pivotreportcache::1::group_name::path::created_date',
+        'sig' => 'civicrm_pivotreport_cache::1::group_name::path::created_date',
       ) ,
     );
     return ($localize && !empty($indices)) ? CRM_Core_DAO_AllCoreTables::multilingualize(__CLASS__, $indices) : $indices;

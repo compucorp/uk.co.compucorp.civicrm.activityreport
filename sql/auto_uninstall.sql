@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS `civicrm_pivotreportcache`;
+DROP TABLE IF EXISTS `civicrm_pivotreport_cache`;

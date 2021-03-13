@@ -16,7 +16,7 @@ class CRM_PivotReport_Upgrader extends CRM_PivotReport_Upgrader_Base {
 
   /**
    * Installation logic.
-   * 
+   *
    * @return boolean
    */
   public function install() {
@@ -34,7 +34,7 @@ class CRM_PivotReport_Upgrader extends CRM_PivotReport_Upgrader_Base {
 
   /**
    * Uninstallation logic.
-   * 
+   *
    * @return boolean
    */
   public function uninstall()
@@ -51,7 +51,7 @@ class CRM_PivotReport_Upgrader extends CRM_PivotReport_Upgrader_Base {
 
   /**
    * Install Pivot Report link under Reports menu.
-   * 
+   *
    * @return boolean
    */
   public function upgrade_0001() {
@@ -194,24 +194,24 @@ class CRM_PivotReport_Upgrader extends CRM_PivotReport_Upgrader_Base {
   }
 
   /**
-   * Adds 'is_active' field into 'civicrm_pivotreportcache' table and
+   * Adds 'is_active' field into 'civicrm_pivotreport_cache' table and
    * sets its value to '1' for all existing cache rows.
    *
    * @return boolean
    */
   public function upgrade_0009() {
-    $this->executeSqlFile('sql/civicrm_pivotreportcache_is_active.sql');
+    $this->executeSqlFile('sql/civicrm_pivotreport_cache_is_active.sql');
 
     return TRUE;
   }
 
   /**
-   * Adds 'source' field into 'civicrm_pivotreportcache' table.
+   * Adds 'source' field into 'civicrm_pivotreport_cache' table.
    *
    * @return boolean
    */
   public function upgrade_0010() {
-    $this->executeSqlFile('sql/civicrm_pivotreportcache_source.sql');
+    $this->executeSqlFile('sql/civicrm_pivotreport_cache_source.sql');
 
     return TRUE;
   }
@@ -223,7 +223,7 @@ class CRM_PivotReport_Upgrader extends CRM_PivotReport_Upgrader_Base {
    * @return boolean
    */
   public function upgrade_0011() {
-    $this->executeSqlFile('sql/civicrm_pivotreportcache_source_comment.sql');
+    $this->executeSqlFile('sql/civicrm_pivotreport_cache_source_comment.sql');
     $this->executeSqlFile('sql/delete_cron_job_status_entry.sql');
 
     return TRUE;
@@ -242,6 +242,28 @@ class CRM_PivotReport_Upgrader extends CRM_PivotReport_Upgrader_Base {
   }
 
   /**
+   * Rename pivot cache table.
+   *
+   * @return boolean
+   */
+  public function upgrade_0013() {
+    $this->renameCacheTable();
+
+    return TRUE;
+  }
+
+  /**
+   * Rename civicrm_pivotreportcache table
+   * and drop the log table if it exist.
+   */
+  private function renameCacheTable() {
+    if (CRM_Core_DAO::checkTableExists('civicrm_pivotreportcache')) {
+      CRM_Core_DAO::executeQuery("RENAME TABLE civicrm_pivotreportcache TO civicrm_pivotreport_cache");
+      CRM_Core_DAO::executeQuery("DROP TABLE IF EXISTS log_civicrm_pivotreportcache;");
+    }
+  }
+
+  /**
    * Creates new menu item using provided parameters.
    *
    * @param array $params
@@ -254,7 +276,7 @@ class CRM_PivotReport_Upgrader extends CRM_PivotReport_Upgrader_Base {
 
   /**
    * Logic which is executing when enabling extension.
-   * 
+   *
    * @return boolean
    */
   public function onEnable() {
@@ -262,8 +284,8 @@ class CRM_PivotReport_Upgrader extends CRM_PivotReport_Upgrader_Base {
 
     $pivotID = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_Navigation', 'pivotreport', 'id', 'name');
     CRM_Core_DAO::executeQuery("
-      UPDATE civicrm_navigation 
-      SET is_active = 1 
+      UPDATE civicrm_navigation
+      SET is_active = 1
       WHERE name IN ('pivotreport', 'Pivot Report Config')
       OR parent_id = $pivotID
     ");
@@ -274,7 +296,7 @@ class CRM_PivotReport_Upgrader extends CRM_PivotReport_Upgrader_Base {
 
   /**
    * Logic which is executing when disabling extension.
-   * 
+   *
    * @return boolean
    */
   public function onDisable() {
@@ -282,8 +304,8 @@ class CRM_PivotReport_Upgrader extends CRM_PivotReport_Upgrader_Base {
 
     $pivotID = CRM_Core_DAO::getFieldValue('CRM_Core_DAO_Navigation', 'pivotreport', 'id', 'name');
     CRM_Core_DAO::executeQuery("
-      UPDATE civicrm_navigation 
-      SET is_active = 0 
+      UPDATE civicrm_navigation
+      SET is_active = 0
       WHERE name IN ('pivotreport', 'Pivot Report Config')
       OR parent_id = $pivotID
     ");

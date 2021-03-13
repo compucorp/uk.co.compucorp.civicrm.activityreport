@@ -1,1 +1,1 @@
-DELETE FROM civicrm_pivotreportcache WHERE path = "cron_job_status";
+DELETE FROM civicrm_pivotreport_cache WHERE path = "cron_job_status";

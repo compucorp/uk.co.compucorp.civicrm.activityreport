@@ -3,7 +3,7 @@
 <table>
   <base>CRM/PivotReport</base>
   <class>PivotReportCache</class>
-  <name>civicrm_pivotreportcache</name>
+  <name>civicrm_pivotreport_cache</name>
   <comment>Table used to build the cache for pivot reports.</comment>
   <add>4.7</add>
   <log>true</log>

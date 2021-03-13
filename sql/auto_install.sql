@@ -1,12 +1,12 @@
-DROP TABLE IF EXISTS `civicrm_pivotreportcache`;
+DROP TABLE IF EXISTS `civicrm_pivotreport_cache`;
 -- /*******************************************************
 -- *
--- * civicrm_pivotreportcache
+-- * civicrm_pivotreport_cache
 -- *
 -- * Table used to build the cache for pivot reports.
 -- *
 -- *******************************************************/
-CREATE TABLE `civicrm_pivotreportcache` (
+CREATE TABLE `civicrm_pivotreport_cache` (
 
 
      `id` int unsigned NOT NULL AUTO_INCREMENT  COMMENT 'Unique PivotReportCache ID',
